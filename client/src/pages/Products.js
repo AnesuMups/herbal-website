@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useSearchParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
@@ -9,11 +9,7 @@ const Products = () => {
   const [searchParams] = useSearchParams();
   const category = searchParams.get('category');
 
-  useEffect(() => {
-    fetchProducts();
-  }, [category]);
-
-  const fetchProducts = async () => {
+  const fetchProducts = useCallback(async () => {
     try {
       const params = category ? { category } : {};
       const response = await axios.get('http://localhost:5000/api/products', { params });
@@ -23,7 +19,11 @@ const Products = () => {
     } finally {
       setLoading(false);
     }
-  };
+  }, [category]);
+
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
 
   const getCategoryName = (cat) => {
     return cat === 'renal' ? 'Renal' : 'Prostate Cancer';
