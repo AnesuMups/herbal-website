@@ -6,7 +6,7 @@ A full-stack web application for herbal products with medical consultation servi
 
 - **Frontend**: React with Tailwind CSS
 - **Backend**: Node.js with Express
-- **Database**: SQLite
+- **Database**: SQLite (local) or LibSQL/Turso (hosted for Vercel)
 - **Additional**: WhatsApp Web.js for WhatsApp integration
 
 ## Features
@@ -50,7 +50,8 @@ cd ..
 
 ### 3. Database Setup
 
-The database is automatically initialized on first run. SQLite will create a `database.sqlite` file in the root directory. No additional setup is required!
+Local development uses SQLite and automatically creates `database.sqlite` in the project root.
+For Vercel (serverless), use a hosted LibSQL/Turso database because the filesystem is read-only.
 
 ### 4. Environment Configuration
 
@@ -61,8 +62,12 @@ Create a `.env` file in the root directory (optional - defaults will work):
 PORT=5000
 NODE_ENV=development
 
-# Database Configuration (SQLite)
+# Database Configuration
+# Local SQLite
 DB_PATH=./database.sqlite
+# Hosted LibSQL/Turso (for Vercel)
+# DATABASE_URL=libsql://your-db.turso.io
+# TURSO_AUTH_TOKEN=your_turso_auth_token
 
 # JWT Secret
 JWT_SECRET=your-super-secret-jwt-key-change-this-in-production

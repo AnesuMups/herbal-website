@@ -4,7 +4,8 @@
 
 ### 1. Database Setup
 
-**No setup needed!** SQLite database is automatically created and initialized on first run. The database file `database.sqlite` will be created in the root directory.
+**Local dev**: SQLite database is created automatically (`database.sqlite` in the root directory).
+**Vercel**: Use a hosted LibSQL/Turso database (filesystem is read-only on Vercel).
 
 ### 2. Environment Variables (Optional)
 
@@ -14,6 +15,9 @@ Create a `.env` file in the root directory (optional - defaults work fine):
 PORT=5000
 NODE_ENV=development
 DB_PATH=./database.sqlite
+# For Vercel (Turso/LibSQL)
+# DATABASE_URL=libsql://your-db.turso.io
+# TURSO_AUTH_TOKEN=your_turso_auth_token
 JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
 ENABLE_WHATSAPP=false
 ```
