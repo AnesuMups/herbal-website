@@ -1,7 +1,6 @@
 {
-  "buildCommand": "npm run build",
-  "installCommand": "npm install && (cd client && npm install)",
+  "buildCommand": "npm install && cd client && npm install && npm run build",
+  "installCommand": "echo 'Dependencies will be installed in buildCommand'",
   "outputDirectory": "client/build",
-  "framework": null,
-  "ignoreCommand": "git diff --quiet HEAD^ HEAD ./"
+  "framework": null
 }
