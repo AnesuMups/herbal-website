@@ -1,6 +1,7 @@
 {
   "buildCommand": "npm run build",
-  "installCommand": "npm install && cd client && npm install",
+  "installCommand": "npm install && (cd client && npm install)",
   "outputDirectory": "client/build",
-  "framework": null
+  "framework": null,
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD ./"
 }
